@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from .models import Shop, Size, Category
 from blog.models import Blog
 
@@ -9,9 +9,6 @@ def index(request):
     last_one_shop = Shop.objects.order_by('-id')[0]
     last_two_shop = Shop.objects.order_by('-id')[1]
     last_three_shop = Shop.objects.order_by('-id')[2]
-    print("last shopping --->", last_one_shop)
-    print("last shopping --->", last_two_shop)
-    print("last shopping --->", last_three_shop)
     ctx = {
         'shops': shops,
         'blogs': blogs,

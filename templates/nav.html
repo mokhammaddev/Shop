@@ -37,18 +37,18 @@
             <div class="col-lg-6 col-md-6">
                 <nav class="header__menu mobile-menu">
                     <ul>
-                        <li class="active"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="active"><a href="{% url 'footer' %}">Home</a></li>
                         <li><a href="{% url 'shop' %}">Shop</a></li>
-                        <li><a href="#">Pages</a>
-                            <ul class="dropdown">
-                                <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="{% url 'blog' %}">Blog</a></li>
+                        <li><a href="{% url 'about' %}">About</a>
+{#                            <ul class="dropdown">#}
+{#                                <li><a href="{% url 'about' %}">About Us</a></li>#}
 {#                                <li><a href="{% url 'shop-detail' id %}">Shop Details</a></li>#}
 {#                                <li><a href="{% url 'shopping' id %}">Shopping Cart</a></li>#}
 {#                                <li><a href="{% url 'checkout' id %}">Check Out</a></li>#}
 {#                                <li><a href="{% url 'blog-detail' id %}">Blog Details</a></li>#}
-                            </ul>
+{#                            </ul>#}
                         </li>
-                        <li><a href="{% url 'blog' %}">Blog</a></li>
                         <li><a href="{% url 'contact' %}">Contacts</a></li>
                     </ul>
                 </nav>

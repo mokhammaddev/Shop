@@ -24,3 +24,14 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.author.username}'s comment"
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=221)
+    email = models.EmailField(unique=True, null=True, blank=True)
+    message = models.TextField()
+    create_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
