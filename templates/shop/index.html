@@ -107,31 +107,31 @@
 
                     <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="{{ shop.image.url }}>
-                        <span class=" label
-                            ">New</span>
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="/static/img/icon/compare.png" alt> <span>Compare</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>{{ shop.title }}</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
-{#                            <div class="rating">#}
-{#                                {% for star in shop.rating %}#}
-{#                                    <i class="fa fa-star-o"></i>#}
-{#                                {% endfor %}#}
-{#                            </div>#}
-                            <h5>${{ shop.price }}</h5>
+                            <div class="product__item__pic set-bg" data-setbg="{{ shop.image.url }}">
+                        <span class="label">New</span>
+                                <ul class="product__hover">
+                                    <li><a href="{% url 'shop-detail' shop.id %}"><img src="/static/img/icon/compare.png" alt>
+                                        <span>Compare</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <h6>{{ shop.title }}</h6>
+                                <a href="#" class="add-cart">+ Add To Cart</a>
+                                {#                            <div class="rating">#}
+                                {#                                {% for star in shop.rating %}#}
+                                {#                                    <i class="fa fa-star-o"></i>#}
+                                {#                                {% endfor %}#}
+                                {#                            </div>#}
+                                <h5>${{ shop.price }}</h5>
 
+                            </div>
                         </div>
-                    </div>
                     </div>
 
                 {% endfor %}
 
-        </div>
+            </div>
         </div>
     </section>
 
@@ -188,12 +188,12 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="instagram__pic">
-                        <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-1.jpg"></div>
-                        <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-2.jpg"></div>
-                        <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-3.jpg"></div>
-                        <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-4.jpg"></div>
-                        <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-5.jpg"></div>
-                        <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-6.jpg"></div>
+                        <div class="instagram__pic__item set-bg" data-setbg="/static/img/banner/banner-1.jpg"></div>
+                        <div class="instagram__pic__item set-bg" data-setbg="/static/img/banner/banner-3.jpg"></div>
+                        <div class="instagram__pic__item set-bg" data-setbg="/static/img/banner/banner-2.jpg"></div>
+                        <div class="instagram__pic__item set-bg" data-setbg="/static/img/banner/banner-3.jpg"></div>
+                        <div class="instagram__pic__item set-bg" data-setbg="/static/img/banner/banner-2.jpg"></div>
+                        <div class="instagram__pic__item set-bg" data-setbg="/static/img/banner/banner-1.jpg"></div>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -223,9 +223,9 @@
                 {% for blog in blogs %}
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="blog__item">
-                            <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-1.jpg"></div>
+                            <div class="blog__item__pic set-bg" data-setbg="{{ blog.image.url }}"></div>
                             <div class="blog__item__text">
-                                <span><img src="{{ blog.image.url }}" alt> {{ blog.created_date }}</span>
+                                <span><img src="/static/img/icon/calendar.png" alt> {{ blog.created_date }}</span>
                                 <h5>{{ blog.title }}</h5>
                                 <a href="{% url 'blog-detail' blog.id %}">Read More</a>
                             </div>

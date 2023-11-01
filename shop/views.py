@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Shop, Size, Category
 from blog.models import Blog
 
@@ -32,7 +32,13 @@ def shop(request):
 
 
 def shop_detail(request, pk):
-    return render(request, 'shop/shop-details.html')
+    shop_object = get_object_or_404(Shop, id=pk)
+    last_objects = Shop.objects.order_by('-id')[:3]
+    ctx = {
+        'shop': shop_object,
+        'last_objects': last_objects,
+    }
+    return render(request, 'shop/shop-details.html', ctx)
 
 
 def shopping(request, pk):
