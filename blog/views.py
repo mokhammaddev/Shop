@@ -5,7 +5,7 @@ from .forms import ContactForm
 
 
 def about(request):
-    return render(request, 'shop/about.html')
+    return render(request, 'blog/about.html')
 
 
 def contact(request):
@@ -18,7 +18,7 @@ def contact(request):
     ctx = {
         'form': form,
     }
-    return render(request, 'shop/contact.html', ctx)
+    return render(request, 'blog/contact.html', ctx)
 
 
 def blog(request):
@@ -26,7 +26,7 @@ def blog(request):
     ctx = {
         'blogs': blogs,
     }
-    return render(request, 'shop/blog.html', ctx)
+    return render(request, 'blog/blog.html', ctx)
 
 
 def blog_detail(request, pk):
@@ -34,5 +34,5 @@ def blog_detail(request, pk):
     ctx = {
         'blog': blog_one_detail,
     }
-    return render(request, 'shop/blog-details.html', ctx)
+    return render(request, 'blog/blog-details.html', ctx)
 

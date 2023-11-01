@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from colorlib.com/etc/regform/colorlib-regform-8/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Nov 2023 08:12:14 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="/static/account/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <link rel="stylesheet" href="/static/account/css/style.css">
+    <meta name="robots" content="noindex, follow">
+    <script nonce="b6168b3c-42d5-4916-a965-4df1bb0dbadd">(function (w, d) {
+        !function (bb, bc, bd, be) {
+            bb[bd] = bb[bd] || {};
+            bb[bd].executed = [];
+            bb.zaraz = {deferred: [], listeners: []};
+            bb.zaraz.q = [];
+            bb.zaraz._f = function (bf) {
+                return async function () {
+                    var bg = Array.prototype.slice.call(arguments);
+                    bb.zaraz.q.push({m: bf, a: bg})
+                }
+            };
+            for (const bh of ["track", "set", "debug"]) bb.zaraz[bh] = bb.zaraz._f(bh);
+            bb.zaraz.init = () => {
+                var bi = bc.getElementsByTagName(be)[0], bj = bc.createElement(be),
+                    bk = bc.getElementsByTagName("title")[0];
+                bk && (bb[bd].t = bc.getElementsByTagName("title")[0].text);
+                bb[bd].x = Math.random();
+                bb[bd].w = bb.screen.width;
+                bb[bd].h = bb.screen.height;
+                bb[bd].j = bb.innerHeight;
+                bb[bd].e = bb.innerWidth;
+                bb[bd].l = bb.location.href;
+                bb[bd].r = bc.referrer;
+                bb[bd].k = bb.screen.colorDepth;
+                bb[bd].n = bc.characterSet;
+                bb[bd].o = (new Date).getTimezoneOffset();
+                if (bb.dataLayer) for (const bo of Object.entries(Object.entries(dataLayer).reduce(((bp, bq) => ({...bp[1], ...bq[1]})), {}))) zaraz.set(bo[0], bo[1], {scope: "page"});
+                bb[bd].q = [];
+                for (; bb.zaraz.q.length;) {
+                    const br = bb.zaraz.q.shift();
+                    bb[bd].q.push(br)
+                }
+                bj.defer = !0;
+                for (const bs of [localStorage, sessionStorage]) Object.keys(bs || {}).filter((bu => bu.startsWith("_zaraz_"))).forEach((bt => {
+                    try {
+                        bb[bd]["z_" + bt.slice(7)] = JSON.parse(bs.getItem(bt))
+                    } catch {
+                        bb[bd]["z_" + bt.slice(7)] = bs.getItem(bt)
+                    }
+                }));
+                bj.referrerPolicy = "origin";
+                bj.src = "/static/account/js/sd0d9.js?z=" + btoa(encodeURIComponent(JSON.stringify(bb[bd])));
+                bi.parentNode.insertBefore(bj, bi)
+            };
+            ["complete", "interactive"].includes(bc.readyState) ? zaraz.init() : bb.addEventListener("DOMContentLoaded", zaraz.init)
+        }(w, d, "zarazData", "script");
+    })(window, document);</script>
+</head>
+<body>
+
+{% block account %}
+
+{% endblock %}
+
+
+
+<script src="/static/account/vendor/jquery/jquery.min.js"></script>
+<script src="/static/account/js/main.js"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317"
+        integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA=="
+        data-cf-beacon='{"rayId":"81f2abe62cd965f7","b":1,"version":"2023.10.0","token":"cd0b4b3a733644fc843ef0b185f98241"}'
+        crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from colorlib.com/etc/regform/colorlib-regform-8/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Nov 2023 08:12:15 GMT -->
+</html>
