@@ -33,7 +33,9 @@ def shop(request):
 
 def shop_detail(request, pk):
     shop_object = get_object_or_404(Shop, id=pk)
-    last_objects = Shop.objects.order_by('-id')[:3]
+    last_objects = Shop.objects.order_by('-id')[:4]
+    shops = Shop.objects.order_by('-id')
+
     ctx = {
         'shop': shop_object,
         'last_objects': last_objects,

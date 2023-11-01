@@ -53,7 +53,7 @@ class Shop(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     size = models.ForeignKey(Size, on_delete=models.CASCADE, null=True, blank=True)
     price = models.FloatField()
-    is_sale = models.BooleanField(default=False)
+    is_sale = models.FloatField(null=True, blank=True)
     rating = models.ForeignKey(Rating, on_delete=models.CASCADE, null=True, blank=True)
     information = models.TextField(null=True, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
