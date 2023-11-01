@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from . models import Blog
 from shop.models import Shop
 from .forms import ContactForm
@@ -22,9 +22,17 @@ def contact(request):
 
 
 def blog(request):
-    return render(request, 'shop/blog.html')
+    blogs = Blog.objects.order_by('-id')
+    ctx = {
+        'blogs': blogs,
+    }
+    return render(request, 'shop/blog.html', ctx)
 
 
 def blog_detail(request, pk):
-    return render(request, 'shop/blog-details.html')
+    blog_one_detail = get_object_or_404(Blog, id=pk)
+    ctx = {
+        'blog': blog_one_detail,
+    }
+    return render(request, 'shop/blog-details.html', ctx)
 
