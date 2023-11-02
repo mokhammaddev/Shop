@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.urls import reverse_lazy
 from .models import Account
+from django.contrib.auth.models import User
 
 
 class AccountCreationForm(forms.ModelForm):
@@ -45,3 +46,27 @@ class AccountChangeForm(forms.ModelForm):
 
     def clean_password(self):
         return self.initial['password']
+
+
+class AccountLoginForm(forms.ModelForm):
+    class Meta:
+        model = Account
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update({
+            "type": "text",
+            "class": "form-input",
+            "name": "name",
+            "id": "name",
+            "placeholder": "Username"
+        })
+
+        self.fields['password'].widget.attrs.update({
+            "type": "text",
+            "class": "form-input",
+            "name": "password",
+            "id": "password",
+            "placeholder": "Password"
+        })
