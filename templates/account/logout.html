@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout</title>
+</head>
+<body>
+<div>
+    <form method="post">
+        {% csrf_token %}
+        Rostan ham saytdan chiqib ketmoqchimisiz ?
+        <div>
+            <button style="color: red" type="submit">HA</button>
+            or
+            <a href="{% url 'index' %}">Yo'q</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>
