@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from . models import Blog
+from django.urls import reverse
+
+from . models import Blog, Comment
 from shop.models import Shop
-from .forms import ContactForm
+from .forms import ContactForm, CommentForm
 
 
 def about(request):
@@ -21,7 +23,7 @@ def contact(request):
     return render(request, 'blog/contact.html', ctx)
 
 
-def blog(request):
+def blog_views(request):
     blogs = Blog.objects.order_by('-id')
     ctx = {
         'blogs': blogs,
@@ -31,7 +33,24 @@ def blog(request):
 
 def blog_detail(request, pk):
     blog_one_detail = get_object_or_404(Blog, id=pk)
+    comments = Comment.objects.filter(blog_id=pk)
+    comment_form = CommentForm()
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if not request.user.is_authenticated:
+            return redirect('login')
+        if comment_form.is_valid():
+            message = request.POST.get('message')
+            blog = blog_one_detail
+            author_id = request.user.id
+            if blog:
+                obj = Comment(message=message, blog_id=pk, author_id=author_id)
+                obj.save()
+            return redirect(reverse('blog-detail', kwargs={"pk": pk}))
+
     ctx = {
+        "comment_form": comment_form,
+        "comments": comments,
         'blog': blog_one_detail,
     }
     return render(request, 'blog/blog-details.html', ctx)

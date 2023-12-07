@@ -6,15 +6,16 @@ from blog.models import Blog
 def index(request):
     shops = Shop.objects.order_by('-id')
     blogs = Blog.objects.order_by('-id')
-    # last_one_shop = Shop.objects.order_by('-id')[0]
-    # last_two_shop = Shop.objects.order_by('-id')[1]
-    # last_three_shop = Shop.objects.order_by('-id')[2]
+    last_one_shop = last_two_shop = last_three_shop = None
+    last_one_shop = Shop.objects.order_by('-id')[0]
+    last_two_shop = Shop.objects.order_by('-id')[1]
+    last_three_shop = Shop.objects.order_by('-id')[2]
     ctx = {
         'shops': shops,
         'blogs': blogs,
-        # 'last_one_shop': last_one_shop,
-        # 'last_two_shop': last_two_shop,
-        # 'last_three_shop': last_three_shop,
+        'last_one_shop': last_one_shop,
+        'last_two_shop': last_two_shop,
+        'last_three_shop': last_three_shop,
     }
     return render(request, 'shop/index.html', ctx)
 

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Contact
+from .models import Contact, Comment
 
 
 class ContactForm(forms.ModelForm):
@@ -24,3 +24,15 @@ class ContactForm(forms.ModelForm):
             "placeholder": "Message"
         })
 
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('message', )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["message"].widget.attrs.update({
+            "placeholder": "message to leave a comment",
+            "class": "col-lg-12 text-center",
+        })

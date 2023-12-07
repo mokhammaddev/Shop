@@ -6,32 +6,20 @@ from django.contrib.auth import authenticate, logout, login
 
 def login_page(request):
     if request.method == "POST":
-        name = request.POST.get('name')
+        username = request.POST.get('username')
         password = request.POST.get('password')
-        print(1111111, name, password)
-        user = authenticate(request, name=name, password=password)
-        if user is not None:
+        user = authenticate(request, username=username, password=password)
+        if user:
             login(request, user)
-            messages.success(request, "Login O'xshadi")
             return redirect('index')
-        else:
-            messages.error(request, "Login o'xshamadi")
-            return redirect('/')
-    ctx = {
-        # 'form': form,
-    }
-    return render(request, 'account/login.html', ctx)
+        return redirect('/')
+    return render(request, 'account/login.html')
 
 
 def logout_page(request):
     if request.method == "POST":
         logout(request)
         return redirect('index')
-    # if request.user.is_authenticated:
-    #     logout(request)
-    #     print("Logout bo'ldi")
-    #     messages.success(request, "Logout o'xshadi")
-    #     return redirect('index')
     return render(request, 'account/logout.html')
 
 
@@ -42,7 +30,6 @@ def sign(request):
         if form.is_valid():
             form.save()
             return redirect('/')
-
     ctx = {
         'form': form,
     }

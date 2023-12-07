@@ -1,20 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Logout</title>
-</head>
-<body>
-<div>
-    <form method="post">
-        {% csrf_token %}
-        Rostan ham saytdan chiqib ketmoqchimisiz ?
-        <div>
-            <button style="color: red" type="submit">HA</button>
-            or
-            <a href="{% url 'index' %}">Yo'q</a>
-        </div>
-    </form>
-</div>
-</body>
-</html>
+
+{% extends 'account/base-account.html' %}
+{% load static %}
+{% block account %}
+    <div class="main">
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <form method="POST" id="signup-form" class="signup-form">
+                        {% csrf_token %}
+                        <h2 class="form-title">Log out</h2>
+                        <h2>Are you sure you want to leave the site?</h2>
+                            <button class="button-logout" type="submit" name="submit" id="submit">Yes</button>
+                            <a href="{% url 'index' %}">No</a>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
