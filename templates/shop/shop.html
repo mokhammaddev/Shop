@@ -41,7 +41,7 @@
                                             <div class="shop__sidebar__categories">
                                                 <ul class="nice-scroll">
                                                     {% for category in categories %}
-                                                        <li><a href="#">{{ category.title }}
+                                                        <li><a href="{% url 'shop' %}?cat={{ category.title }}">{{ category.title }}
                                                             ({{ category.set_count }})</a></li>
                                                     {% endfor %}
                                                 </ul>
@@ -78,7 +78,7 @@
                                             <div class="shop__sidebar__size">
                                                 {% for size in sizes %}
                                                     <label for="xs">
-                                                        <a href="#">{{ size }}</a>
+                                                        <a href="{% url 'shop' %}?size={{ size.title }}">{{ size }}</a>
                                                     </label>
                                                 {% endfor %}
                                             </div>

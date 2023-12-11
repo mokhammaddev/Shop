@@ -12,7 +12,7 @@ def login_page(request):
         if user:
             login(request, user)
             return redirect('index')
-        return redirect('/')
+        return redirect('login')
     return render(request, 'account/login.html')
 
 
@@ -29,7 +29,9 @@ def sign(request):
         form = AccountCreationForm(data=request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('login')
+        messages.error("Login failed")
+
     ctx = {
         'form': form,
     }
