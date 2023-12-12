@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="product__pagination">
+            {#                        {% if shops.has_previous %}#}
+            {#                            <li><a href="?page={{ shops.previous_page_number }}"><</a></li>#}
+            {#                        {% endif %}#}
+            {% for page_item in shops.paginator.page_range %}
+                <a class="{% if page_item == shops.number %}active{% endif %}"
+                   href="?page={{ page_item }}">{{ page_item }}</a>
+            {% endfor %}
+            {#                        {% if shops.has_next %}#}
+            {#                            <li><a href="?page={{ shops.next_page_number }}">></a></li>#}
+            {#                        {% endif %}#}
+            {#            <a href="#">2</a>#}
+            {#            <a href="#">3</a>#}
+            {#            <span>...</span>#}
+            {#            <a href="#">21</a>#}
+        </div>
+    </div>
+</div>
+
+{#------------------------------------------------------------------------------------------------------------------#}
+
+{#<div class="row mt-5">#}
+{#    <div class="col-md-12 text-center">#}
+{#        <nav aria-label="Page navigation" class="text-center">#}
+{#            <ul class="pagination">#}
+{#                {% if object_list.has_previous %}#}
+{#                    <li><a href="?page={{ object_list.previous_page_number }}"><</a></li>#}
+{#                {% endif %}#}
+{#                {% for page_item in object_list.paginator.page_range %}#}
+{#                    <li class="{% if page_item == object_list.number %}active{% endif %}"><a#}
+{#                            href="?page={{ page_item }}"><span>{{ page_item }}</span></a></li>#}
+{#                {% endfor %}#}
+{#                {% if object_list.has_next %}#}
+{#                    <li><a href="?page={{ object_list.next_page_number }}">></a></li>#}
+{#                {% endif %}#}
+{#            </ul>#}
+{#        </nav>#}
+{#    </div>#}
+{#</div>#}

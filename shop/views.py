@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, get_object_or_404
 from .models import Shop, Size, Category, Sale
 from blog.models import Blog
@@ -35,17 +36,24 @@ def shop(request):
     cat = request.GET.get('cat')
     size = request.GET.get('size')
     prc = request.GET.get('prc')
+    print("price-->", prc)
     search = request.GET.get('search')
     if search:
-        shops = request.GET.get('search')
+        shops = shops.filter(title__icontains=search)
     if cat:
         shops = shops.filter(category__title__exact=cat)
     if size:
         shops = shops.filter(size__title__exact=size)
-    if prc:
-        shops = shops.filter(price__exact=prc)
+    page_number = request.GET.get('page', 1)
+    paginator = Paginator(shops, 3)
+    try:
+        page_obj = paginator.page(page_number)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginator.page(1)
     ctx = {
-        'shops': shops,
+        'shops': page_obj,
         'categories': categories,
         'sizes': sizes,
     }
