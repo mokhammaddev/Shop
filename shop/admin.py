@@ -8,3 +8,5 @@ admin.site.register(models.Shop)
 admin.site.register(models.Category)
 admin.site.register(models.ImageShopDetail)
 admin.site.register(models.Sale)
+admin.site.register(models.SoldShop)
+

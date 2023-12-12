@@ -1,4 +1,5 @@
 from django.db import models
+from account.models import Account
 
 
 def image_path(instance, filename):
@@ -46,6 +47,7 @@ class Shop(models.Model):
     image = models.ImageField(upload_to=image_path)
     image_detail = models.ForeignKey(ImageShopDetail, on_delete=models.SET_NULL, null=True, blank=True)
     color = models.ForeignKey(Color, on_delete=models.CASCADE)
+    # integer = models.IntegerField(default=1)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
     size = models.ForeignKey(Size, on_delete=models.SET_NULL, null=True, blank=True)
     price = models.FloatField()
@@ -68,3 +70,6 @@ class Sale(models.Model):
         return self.title
 
 
+class SoldShop(models.Model):
+    account = models.ForeignKey(Account, on_delete=models.CASCADE)
+    shop = models.ForeignKey(Shop, on_delete=models.CASCADE)
