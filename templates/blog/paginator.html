@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="product__pagination">
+            {% for page_item in blogs.paginator.page_range %}
+                <a class="{% if page_item == blogs.number %}active{% endif %}"
+                   href="?page={{ page_item }}">{{ page_item }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>

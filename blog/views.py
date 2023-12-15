@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
@@ -25,8 +26,16 @@ def contact(request):
 
 def blog_views(request):
     blogs = Blog.objects.order_by('-id')
+    page_number = request.GET.get('page', 1)
+    paginator = Paginator(blogs, 3)
+    try:
+        page_obj = paginator.page(page_number)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginator.page(1)
     ctx = {
-        'blogs': blogs,
+        'blogs': page_obj,
     }
     return render(request, 'blog/blog.html', ctx)
 

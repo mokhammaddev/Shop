@@ -8,17 +8,34 @@ def index(request):
     last_one_shop = last_two_shop = last_three_shop = sale = sale_money = sale_time = None
     shops = Shop.objects.order_by('-id')
     blogs = Blog.objects.order_by('-id')
-    if last_one_shop and last_two_shop and last_three_shop:
-        last_one_shop = Shop.objects.order_by('-id')[0]
-        last_two_shop = Shop.objects.order_by('-id')[1]
-        last_three_shop = Shop.objects.order_by('-id')[2]
+
+    # if last_one_shop and last_two_shop and last_three_shop:
+    #     last_one_shop = Shop.objects.order_by('-id')[0]
+    #     last_two_shop = Shop.objects.order_by('-id')[1]
+    #     last_three_shop = Shop.objects.order_by('-id')[2]
     if sale:
         sale = Sale.objects.order_by('-id')[0]
         sale_money = sale.shop.price*(sale.percent/100)
         sale_time = sale.end_date - sale.start_date
+    page_number = request.GET.get('page', 1)
+    paginator = Paginator(shops, 8)
+    try:
+        page_obj = paginator.page(page_number)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginator.page(1)
+    page_number_blog = request.GET.get('page', 1)
+    paginator = Paginator(blogs, 8)
+    try:
+        page_obj_blog = paginator.page(page_number_blog)
+    except PageNotAnInteger:
+        page_obj_blog = paginator.page(1)
+    except EmptyPage:
+        page_obj_blog = paginator.page(1)
     ctx = {
-        'shops': shops,
-        'blogs': blogs,
+        'shops': page_obj,
+        'blogs': page_obj_blog,
         'last_one_shop': last_one_shop,
         'last_two_shop': last_two_shop,
         'last_three_shop': last_three_shop,
@@ -64,10 +81,11 @@ def shop_detail(request, pk):
     shop_object = get_object_or_404(Shop, id=pk)
     last_objects = Shop.objects.order_by('-id')[:4]
     shops = Shop.objects.order_by('-id')
-
+    sizes = Size.objects.all()
     ctx = {
         'shop': shop_object,
         'last_objects': last_objects,
+        'sizes': sizes,
     }
     return render(request, 'shop/shop-details.html', ctx)
 
