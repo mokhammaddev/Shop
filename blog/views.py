@@ -63,4 +63,3 @@ def blog_detail(request, pk):
         'blog': blog_one_detail,
     }
     return render(request, 'blog/blog-details.html', ctx)
-
