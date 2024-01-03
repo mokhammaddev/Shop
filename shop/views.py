@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, get_object_or_404
-from .models import Shop, Size, Category, Sale
+from .models import Shop, Size, Category, Sale, SoldShop
 from blog.models import Blog
 
 
@@ -90,12 +90,8 @@ def shop_detail(request, pk):
     return render(request, 'shop/shop-details.html', ctx)
 
 
-def shopping(request, pk):
-    cart = get_object_or_404(Shop, id=pk)
-    ctx = {
-        'cart': cart,
-    }
-    return render(request, 'shop/shopping-cart.html', ctx)
+def shopping(request):
+    return render(request, 'shop/shopping-cart.html')
 
 
 def checkout(request, pk):
