@@ -90,7 +90,13 @@ def shop_detail(request, pk):
 
 
 def shopping(request):
+    sold_shop = []
     sold_shops = SoldShop.objects.order_by('-id')
+    # if request.user.is_authenticated:
+    #     sold_shops = SoldShop.objects.order_by('-id')
+    #     for shop in sold_shops:
+    #         if shop.account == request.user:
+    #             sold_shop.append(shop)
     ctx = {
         'sold_shops': sold_shops,
     }
