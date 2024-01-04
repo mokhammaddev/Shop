@@ -1,5 +1,5 @@
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from .models import Shop, Size, Category, Sale, SoldShop
 from blog.models import Blog
 
@@ -53,7 +53,6 @@ def shop(request):
     cat = request.GET.get('cat')
     size = request.GET.get('size')
     prc = request.GET.get('prc')
-    print("price-->", prc)
     search = request.GET.get('search')
     if search:
         shops = shops.filter(title__icontains=search)
@@ -91,8 +90,13 @@ def shop_detail(request, pk):
 
 
 def shopping(request):
-    return render(request, 'shop/shopping-cart.html')
+    sold_shops = SoldShop.objects.order_by('-id')
+    ctx = {
+        'sold_shops': sold_shops,
+    }
+    return render(request, 'shop/shopping-cart.html', ctx)
 
 
 def checkout(request, pk):
     return render(request, 'shop/checkout.html')
+

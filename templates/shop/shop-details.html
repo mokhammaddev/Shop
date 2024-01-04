@@ -152,7 +152,7 @@
                                         <input type="text" value="1">
                                     </div>
                                 </div>
-                                <a href="{% url 'shopping' shop.id %}" class="primary-btn">add to cart</a>
+                                <a href="{% url 'shopping' %}" class="primary-btn">add to cart</a>
                             </div>
                             <div class="product__details__last__option">
                                 <h5><span>Guaranteed Safe Checkout</span></h5>
@@ -216,7 +216,7 @@
                             </div>
                             <div class="product__item__text">
                                 <h6>{{ object.title }}</h6>
-                                <a href="{% url 'shopping' object.id %}" class="add-cart">+ Add To Cart</a>
+                                <a href="{% url 'shopping' %}" class="add-cart">+ Add To Cart</a>
                                 <h5>${{ object.price }}
                                 </h5>
                                 <div class="product__color__select">
