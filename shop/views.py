@@ -90,19 +90,38 @@ def shop_detail(request, pk):
 
 
 def shopping(request):
-    sold_shop = []
-    sold_shops = SoldShop.objects.order_by('-id')
-    # if request.user.is_authenticated:
-    #     sold_shops = SoldShop.objects.order_by('-id')
-    #     for shop in sold_shops:
-    #         if shop.account == request.user:
-    #             sold_shop.append(shop)
+    sold_one_shop = []
+    all_price_sold_shop = number_sold_shop = 0
+    if request.user.is_authenticated:
+        sold_shops = SoldShop.objects.order_by('-id')
+        for shop_one in sold_shops:
+            if shop_one.account == request.user:
+                sold_one_shop.append(shop_one)
+                number_sold_shop += 1
+                all_price_sold_shop += shop_one.shop.price
     ctx = {
-        'sold_shops': sold_shops,
+        'sold_shops': sold_one_shop,
+        'all_price_sold_shop': all_price_sold_shop,
+        'number_sold_shop': number_sold_shop,
     }
     return render(request, 'shop/shopping-cart.html', ctx)
 
 
 def checkout(request, pk):
     return render(request, 'shop/checkout.html')
+
+
+def navbar(request):
+    all_price_sold_shop = number_sold_shop = 0
+    if request.user.is_authenticated:
+        sold_shops = SoldShop.objects.order_by('-id')
+        for shop_one in sold_shops:
+            if shop_one.account == request.user:
+                number_sold_shop += 1
+                all_price_sold_shop += shop_one.shop.price
+    ctx = {
+        'all_price_sold_shop': all_price_sold_shop,
+        'number_sold_shop': number_sold_shop,
+    }
+    return render(request, 'nav.html', ctx)
 
