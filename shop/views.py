@@ -4,6 +4,25 @@ from .models import Shop, Size, Category, Sale, SoldShop
 from blog.models import Blog
 
 
+def navbar(request):
+    all_price_sold_shop = number_sold_shop = 0
+    if request.user.is_authenticated:
+        sold_shops = SoldShop.objects.order_by('-id')
+        for shop_one in sold_shops:
+            if shop_one.account == request.user:
+                number_sold_shop += 1
+                all_price_sold_shop += shop_one.shop.price
+    ctx = {
+        'all_price_sold_shop': all_price_sold_shop,
+        'number_sold_shop': number_sold_shop,
+    }
+    return render(request, 'nav.html', ctx)
+
+
+def footer(request):
+    return render(request, 'footer.html')
+
+
 def index(request):
     last_one_shop = last_two_shop = last_three_shop = sale = sale_money = sale_time = None
     shops = Shop.objects.order_by('-id')
@@ -109,19 +128,3 @@ def shopping(request):
 
 def checkout(request, pk):
     return render(request, 'shop/checkout.html')
-
-
-def navbar(request):
-    all_price_sold_shop = number_sold_shop = 0
-    if request.user.is_authenticated:
-        sold_shops = SoldShop.objects.order_by('-id')
-        for shop_one in sold_shops:
-            if shop_one.account == request.user:
-                number_sold_shop += 1
-                all_price_sold_shop += shop_one.shop.price
-    ctx = {
-        'all_price_sold_shop': all_price_sold_shop,
-        'number_sold_shop': number_sold_shop,
-    }
-    return render(request, 'nav.html', ctx)
-
