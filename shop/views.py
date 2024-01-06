@@ -3,7 +3,6 @@ from django.shortcuts import render, get_object_or_404, reverse, redirect
 from .models import Shop, Size, Category, Sale, SoldShop
 from blog.models import Blog
 
-
 def navbar(request):
     all_price_sold_shop = number_sold_shop = 0
     if request.user.is_authenticated:
@@ -27,7 +26,6 @@ def index(request):
     last_one_shop = last_two_shop = last_three_shop = sale = sale_money = sale_time = None
     shops = Shop.objects.order_by('-id')
     blogs = Blog.objects.order_by('-id')
-
     # if last_one_shop and last_two_shop and last_three_shop:
     #     last_one_shop = Shop.objects.order_by('-id')[0]
     #     last_two_shop = Shop.objects.order_by('-id')[1]
