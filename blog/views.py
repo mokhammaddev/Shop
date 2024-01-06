@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
 from . models import Blog, Comment
-from shop.models import Shop
+from shop.models import Shop, SoldShop
 from .forms import ContactForm, CommentForm
 
 
@@ -56,7 +56,6 @@ def blog_detail(request, pk):
                 obj = Comment(message=message, blog_id=pk, author_id=author_id)
                 obj.save()
             return redirect(reverse('blog-detail', kwargs={"pk": pk}))
-
     ctx = {
         "comment_form": comment_form,
         "comments": comments,

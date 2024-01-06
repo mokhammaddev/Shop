@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+
     <section class="hero">
         <div class="hero__slider owl-carousel">
             <div class="hero__items set-bg" data-setbg="/static/img/index-new.jpg">
@@ -12,7 +13,8 @@
                                 <h2>Fall - Winter Collections 2030</h2>
                                 <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering
                                     commitment to exceptional quality.</p>
-                                <a href="{% url 'shop' %}" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                                <a href="{% url 'shop' %}" class="primary-btn">Shop now <span
+                                        class="arrow_right"></span></a>
                                 <div class="hero__social">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
                                     <a href="#"><i class="fa fa-twitter"></i></a>
@@ -223,6 +225,4 @@
             </div>
         </div>
     </section>
-
-
 {% endblock %}
