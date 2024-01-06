@@ -8,10 +8,6 @@ def index(request):
     last_one_shop = last_two_shop = last_three_shop = sale = sale_money = sale_time = None
     shops = Shop.objects.order_by('-id')
     blogs = Blog.objects.order_by('-id')
-    # if last_one_shop and last_two_shop and last_three_shop:
-    #     last_one_shop = Shop.objects.order_by('-id')[0]
-    #     last_two_shop = Shop.objects.order_by('-id')[1]
-    #     last_three_shop = Shop.objects.order_by('-id')[2]
     if sale:
         sale = Sale.objects.order_by('-id')[0]
         sale_money = sale.shop.price*(sale.percent/100)
