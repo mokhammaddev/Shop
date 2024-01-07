@@ -70,3 +70,5 @@ class AccountLoginForm(forms.ModelForm):
             "id": "password",
             "placeholder": "Password"
         })
+
+
