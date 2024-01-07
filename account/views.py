@@ -13,7 +13,8 @@ def login_page(request):
             login(request, user)
             return redirect('index')
         return redirect('login')
-    return render(request, 'account/login.html')
+    # return render(request, 'account/login.html')
+    return render(request, 'account/login_new.html')
 
 
 def logout_page(request):
