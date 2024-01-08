@@ -47,51 +47,51 @@ class AccountChangeForm(forms.ModelForm):
     def clean_password(self):
         return self.initial['password']
 
-
-class AccountLoginForm(forms.ModelForm):
-    class Meta:
-        model = Account
-        fields = '__all__'
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update({
-            "type": "text",
-            "class": "form-input",
-            "name": "name",
-            "id": "name",
-            "placeholder": "Username"
-        })
-
-        self.fields['password'].widget.attrs.update({
-            "type": "text",
-            "class": "form-input",
-            "name": "password",
-            "id": "password",
-            "placeholder": "Password"
-        })
-
-
-class AccountLoginNewForm(forms.ModelForm):
-    class Meta:
-        model = Account
-        fields = '__all__'
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update({
-            "type": "text",
-            "class": "registration-form-field",
-            "name": "username",
-            "aria-label": "First name",
-            "placeholder": "Username",
-            "required": True,
-        })
-
-        self.fields['password'].widget.attrs.update({
-            "type": "password",
-            "class": "registration-form-field",
-            "name": "password",
-            "aria-label": "password",
-            "placeholder": "password",
-        })
+#
+# class AccountLoginForm(forms.ModelForm):
+#     class Meta:
+#         model = Account
+#         fields = '__all__'
+#
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.fields['username'].widget.attrs.update({
+#             "type": "text",
+#             "class": "form-input",
+#             "name": "name",
+#             "id": "name",
+#             "placeholder": "Username"
+#         })
+#
+#         self.fields['password'].widget.attrs.update({
+#             "type": "text",
+#             "class": "form-input",
+#             "name": "password",
+#             "id": "password",
+#             "placeholder": "Password"
+#         })
+#
+#
+# class AccountLoginNewForm(forms.ModelForm):
+#     class Meta:
+#         model = Account
+#         fields = '__all__'
+#
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.fields['username'].widget.attrs.update({
+#             "type": "text",
+#             "class": "registration-form-field",
+#             "name": "username",
+#             "aria-label": "First name",
+#             "placeholder": "Username",
+#             "required": True,
+#         })
+#
+#         self.fields['password'].widget.attrs.update({
+#             "type": "password",
+#             "class": "registration-form-field",
+#             "name": "password",
+#             "aria-label": "password",
+#             "placeholder": "password",
+#         })
