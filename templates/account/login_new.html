@@ -19,6 +19,7 @@
 
             <!-- REGISTRATION-FORM  -->
             <form class="registration-form" method="POST">
+                {% csrf_token %}
                 <h2 class="registration-form-heading">Login</h2>
                 <div class="registration-form-fields">
                     <input class="registration-form-field" type="text" name="username" placeholder="Username"
