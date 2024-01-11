@@ -5,6 +5,11 @@ from blog.models import Blog
 
 
 def index(request):
+    all_price_sold_shop = number_sold_shop = 0
+    sold_one_shop = SoldShop.objects.all()
+    for sold_shop in sold_one_shop:
+        all_price_sold_shop += sold_shop.shop.price
+        number_sold_shop += 1
     last_one_shop = last_two_shop = last_three_shop = sale = sale_money = sale_time = None
     shops = Shop.objects.order_by('-id')
     blogs = Blog.objects.order_by('-id')
@@ -37,11 +42,18 @@ def index(request):
         'sale': sale,
         'sale_time': sale_time,
         'sale_money': sale_money,
+        'all_price_sold_shop': all_price_sold_shop,
+        'number_sold_shop': number_sold_shop,
     }
     return render(request, 'shop/index.html', ctx)
 
 
 def shop(request):
+    all_price_sold_shop = number_sold_shop = 0
+    sold_one_shop = SoldShop.objects.all()
+    for sold_shop in sold_one_shop:
+        all_price_sold_shop += sold_shop.shop.price
+        number_sold_shop += 1
     shops = Shop.objects.order_by('-id')
     categories = Category.objects.all()
     sizes = Size.objects.all()
@@ -67,11 +79,18 @@ def shop(request):
         'shops': page_obj,
         'categories': categories,
         'sizes': sizes,
+        'all_price_sold_shop': all_price_sold_shop,
+        'number_sold_shop': number_sold_shop,
     }
     return render(request, 'shop/shop.html', ctx)
 
 
 def shop_detail(request, pk):
+    all_price_sold_shop = number_sold_shop = 0
+    sold_one_shop = SoldShop.objects.all()
+    for sold_shop in sold_one_shop:
+        all_price_sold_shop += sold_shop.shop.price
+        number_sold_shop += 1
     shop_object = get_object_or_404(Shop, id=pk)
     last_objects = Shop.objects.order_by('-id')[:4]
     shops = Shop.objects.order_by('-id')
@@ -80,14 +99,22 @@ def shop_detail(request, pk):
         'shop': shop_object,
         'last_objects': last_objects,
         'sizes': sizes,
+        'all_price_sold_shop': all_price_sold_shop,
+        'number_sold_shop': number_sold_shop,
     }
     return render(request, 'shop/shop-details.html', ctx)
 
 
 def shopping(request):
-    sold_one_shop = []
+    all_price_sold_shop = number_sold_shop = 0
+    sold_one_shop = SoldShop.objects.all()
+    for sold_shop in sold_one_shop:
+        all_price_sold_shop += sold_shop.shop.price
+        number_sold_shop += 1
     ctx = {
         'sold_shops': sold_one_shop,
+        'all_price_sold_shop': all_price_sold_shop,
+        'number_sold_shop': number_sold_shop,
     }
     return render(request, 'shop/shopping-cart.html', ctx)
 
